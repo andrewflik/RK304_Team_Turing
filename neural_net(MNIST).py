@@ -1,6 +1,6 @@
 """
-	Author - Devesh R
-	IMPLEMENTING NEURAL NETWORK FROM SCRATCH USING NUMPY
+	Author - Devesh 
+	IMPLEMENTING NEURAL NETWORK
 """
 import numpy as np
 import random
