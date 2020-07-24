@@ -1,5 +1,5 @@
 """
-	Author - Devesh
+	Author - Devesh R
 	IMPLEMENTING NEURAL NETWORK FROM SCRATCH USING NUMPY
 """
 import numpy as np
