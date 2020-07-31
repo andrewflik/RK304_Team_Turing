@@ -1,5 +1,5 @@
-# Smart-India-Hackathon-2020 RK304  
-Project on Fake Media Identification
+# Smart-India-Hackathon-2020 RK304    
+:checkered_flag: Project on Fake Media Identification :checkered_flag:  
 
   :rocket: This is the official REPO from Team Turing for the PS : RK304!!! :rocket: <br/>
  ## Organization - BPRD (Bureau of Police Research and Development)  
