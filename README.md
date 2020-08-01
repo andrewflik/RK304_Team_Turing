@@ -9,6 +9,6 @@
   1} :star: Devesh Rajput (Team Leader - Current GITHUB User) <br/>
   2} :star: Abhishek Kalra <br/>
   3} :star: Prachi Gangwar <br/>
-  4} :star: Himanshu Singh <br/>
+  4} :star: Himanshu Kumar <br/>
   5} :star: Ishan Agarwal <br/>
   6} :star: Ashish Kumar <br/>
