@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Complete</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{url_for('static', filename='dropzone-5.7.0/dist/dropzone.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='dropzone-5.7.0/dist/dropzone.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+<body>
+{% include 'header.html' %}
+
+</head>
+<body>
+
+ <!-- <img src="{{ url_for('static' , filename =  user_image ) }}" alt="User Image">
+   -->
+
+   <video class="video-fluid z-depth-1" autoplay loop controls muted  style="margin: 0 auto;width: 42%;height: 60%;margin-left: 28%;margin-top: 40px;border: 2px dashed black;padding: 3px 50px;">
+  <source src="{{ url_for('static' , filename =  'videos/output/003_000.mp4' ) }}" type="video/mp4" />
+</video>
+<br>
+<div class="alert alert-{{ val2 }} text-center" role="alert" style="margin: 20px 100px;font-size: 20px; >
+  <h4  style="font-size: 40px;" class="alert-heading">Well done!</h4>
+  <p style="font-size: 3rem;" > <strong> Video is {{val3}} </strong> </p>
+  <p class="font-weight-bold" >For clarification the model that we are using is not complete, the result may not be accurate </p>
+  <p class="text-center">Information about the processing :  </p>
+  <hr>
+  <p class="mb-0 font-weight-bold text-center ">  {{val1}} </p>
+</div>
+
+</body>
+
+<!-- Footer -->
+<footer style="margin-top: 4rem" class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="#"> DFD.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+</html>
