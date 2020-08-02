@@ -46,7 +46,7 @@ class neuralNet():
 		# Return the number of test inputs for which the neural network o/p's the correct result
 
 if __name__ == "__main__":
-	net = neuralNet([2, 3, 1])	# No of neurons in each Layer
+	net = neuralNet([2, 3, 1])	# Number of neurons in each Layer
 	print(net.feedForward(np.array([[1], [1]])))
 
 
