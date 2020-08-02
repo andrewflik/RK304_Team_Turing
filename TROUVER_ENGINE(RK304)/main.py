@@ -25,6 +25,7 @@ from PIL import Image, ImageChops, ImageEnhance
 import cv2
 import numpy as np
 from keras.preprocessing import image
+from keras.models import model_from_json
 # Imports PIL module  
 from PIL import Image 
 import tensorflow as tf
@@ -36,18 +37,29 @@ dropzone = Dropzone(app)    # INIT DROPZONE FOR FILE UPLOAD
 #run_with_ngrok(app)  
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+
 """ LOADING DEVNET -- """
 cmfdModel = create_CMFD_model('./pretrained_devNet.hd5')
+print("------- DevNet Loaded from Disk --------")
+# load model from JSON file
+with open("modela.json", "r") as json_file:
+    loaded_model_json = json_file.read()
+    loaded_model = model_from_json(loaded_model_json)
+
+# load weights into the new model
+loaded_model.load_weights("modelNNa.h5")
+print("-------- Model loaded from disk --------")
+#loaded_model.summary()
 
 ############# HELPER ################################
 from interface import predict_video, predict_youtube
 
 # Note the curr DIR
 APP_ROOT = os.path.abspath(app.root_path)
-print(APP_ROOT, file=sys.stderr)
+#print(APP_ROOT, file=sys.stderr)
 #print(resource_path, file=sys.stderr)
 VideoDir = APP_ROOT
-print(VideoDir, file=sys.stderr)
+#print(VideoDir, file=sys.stderr)
 app.config.update(
     UPLOADED_PATH=os.path.join(APP_ROOT, 'static\images'),
     # Flask-Dropzone config:
@@ -68,6 +80,8 @@ storeResultVid = {} # store vid result
 res = 0
 conf = 0
 OP = ["1", "2", "3", "4", "5"]
+NETWORK_LIST = ["facebook", "flickr", "twitter"]
+res = ""
 """                   """
 
 @app.route('/')
@@ -81,6 +95,14 @@ def text_forensic():
 @app.route('/image_forensic')
 def image_forensic():
     return render_template('image_forensic.html')
+
+@app.route('/video_forensic')
+def video_forensic():
+    return render_template('video_forensic.html')
+
+@app.route('/viral_forensic')
+def viral_forensic():
+    return render_template('viral_forensic.html')
 
 """
     Upload Image
@@ -129,9 +151,7 @@ def image_result():
 
 
 #####################################################
-@app.route('/video_forensic')
-def video_forensic():
-    return render_template('video_forensic.html')
+
 
 """
     Upload Video
@@ -158,11 +178,47 @@ def upload_video():
 def video_result():
     return render_template('video_result.html', storeResultVid = storeResultVid, OP = OP)
 
+###### HELPER FN ############
+def predictSite(img):
+    preds = loaded_model.predict(img)
+    #return self.preds
+    return NETWORK_LIST[np.argmax(preds)]
+
+@app.route('/upload_viral', methods = ['POST', 'GET'])
+def upload_viral():
+    global filename
+    file = None
+    if request.method == 'POST':
+        file_obj = request.files
+        for key, f in request.files.items():
+            if key.startswith('file'):
+                #name = f.filename
+                print("IM HERE", file=sys.stderr)
+                global sNo
+                global storeResult
+                imgDir = os.path.join(app.config["UPLOADED_PATH"], f.filename)
+                f.save(imgDir)   # save image
+
+                # predicting images
+                print(imgDir, file=sys.stderr)
+                img_width, img_height = 64, 64
+                img = image.load_img(imgDir, target_size = (img_width, img_height))
+                img = image.img_to_array(img)
+                img = np.expand_dims(img, axis = 0)
+                print("IM HERE2", file=sys.stderr)
+                global res
+                res = predictSite(img)
+                print(res, file=sys.stderr)
+                #f = request.files.get(f)
+                #print (f.filename)
+    return jsonify("1")
 #########################################################
 
-@app.route('/viral_forensic')
-def viral_forensic():
-    return render_template('viral_forensic.html')
+@app.route('/viral_result')
+def viral_result():
+    print("HEREEEEEEEEEEEEEEEEEE" + res, file=sys.stderr)
+    return render_template("viral_result.html", recv = res)
+
 
 
 if __name__ == "__main__":
