@@ -26,7 +26,7 @@ class neuralNet():
 		mse = np.sum(mse)/len(res)
 		return mse
 
-	# Train Neural network with Mini Batch Stochastic gradient descent (Mixture of SGD and Batch Gradient Descet)
+	# Train Neural network with Mini Batch Stochastic gradient descent (Mixture of SGD and Batch Gradient Descent)
 	def SGD(self, trainingData, epochs, miniBatchSize, learningRate, testData): 
 		totalTest = len(testData)
 		totalTrain = len(totalTrain)
