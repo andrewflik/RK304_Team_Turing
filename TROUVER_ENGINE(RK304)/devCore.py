@@ -33,7 +33,8 @@ def visualize_result( rgb, gt, pred, figsize=(12,4), title=None ) :
     pyplot.title('cmdfMOdel pred')
     if title is not None :
         pyplot.suptitle( title )
-
+    pyplot.close()  # do close the thread
+    
 def std_norm_along_chs(x) :
     '''Data normalization along the channle axis
     Input:
