@@ -1,5 +1,5 @@
 """
-	Author - DEVESH 
+	AUTHOR - DEVESH 
 	IMPLEMENTING NEURAL NETWORK
 """
 import numpy as np
