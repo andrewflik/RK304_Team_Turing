@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Home</title>
-
 	<!-- Enable zoom on mobile device
 	====================================	 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,43 +13,50 @@
 
 	<!-- Animate css
 	====================================	 -->
-	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="static/css/animate.min.css">
 
 
 	<!-- Mean menu
 	====================================	 -->
-	<link rel="stylesheet" href="css/meanmenu.min.css">
+	<link rel="stylesheet" href="static/css/meanmenu.min.css">
 
 	<!-- venobox
 	====================================	 -->
-	<link rel="stylesheet" href="js/venobox/venobox.css">
+	<link rel="stylesheet" href="static/js/venobox/venobox.css">
 
 	<!-- Default Owl theme
 	====================================	 -->
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="static/css/owl.theme.default.min.css">
 
 	<!-- Owl carousel
 	====================================	 -->
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="static/css/owl.carousel.min.css">
 
 	<!-- Bootstrap theme
 	====================================	 -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="static/css/bootstrap.min.css">
 	
 	<!-- style css
 	====================================	 -->
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="static/style.css">
 
 	<!-- faveicon
 	================================ -->
-	<link rel="shortcut icon" href="img/icon/favicon.png" type="image/x-icon">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dropzone@5.2.0/dist/min/dropzone.min.css" type="text/css">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/dropzone-5.7.0/dist/dropzone.js"></script>
+<link rel="stylesheet" href="/static/dropzone-5.7.0/dist/dropzone.css">
+<link rel="stylesheet" href="/static/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	<style>
 	
-	
-		.brand-logo h3{text-align:left;
-		font-size:13px;
-		color:#27ae61}
 		.prev{
 		
 		margin-left: 877px;
@@ -88,6 +94,76 @@
 	  border-radius: 50%;
 	}
 		
+	.dropzone {
+		border: 2px dashed #0087F7; 
+		margin: 10px 0 10px; 
+		margin-right: 100px;
+		margin-left: 100px;
+		min-height: 200px;
+	}
+	   .pagetitles {
+        font-weight: bold;
+        font-family: 'Helvetica Neue', sans-serif;
+    }
+    div.form
+{
+    display: block;
+    text-align: center;
+}
+form {
+	margin-top: 100px;
+    outline: 0;
+    display: inline-block;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+form>.textbox {
+    outline: 0;
+    height: 100px;
+    width: 600px;
+    line-height: 42px;
+    padding: 0 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #212121;
+    border: 0;
+    float: left;
+    -webkit-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+}
+
+form>.textbox:focus {
+	text-align: center;
+    outline: 0;
+    background-color: #FFF;
+}
+
+form>.button {
+    outline: 0;
+    background: none;
+    background-color: rgba(38, 50, 56, 0.8);
+    height: 100px;
+    width: 42px;
+    text-align: center;
+    line-height: 42px;
+    border: 0;
+    color: #FFF;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 16px;
+    text-rendering: auto;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    -webkit-transition: background-color .4s ease;
+    transition: background-color .4s ease;
+    -webkit-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+form>.button:hover {
+    background-color: rgba(0, 150, 136, 0.8);
+}
+
 		</style>
 		<style type="text/css">
 	
@@ -119,54 +195,176 @@
 <!-- =====================================================
 				==Start Banner==
 ===================================================== -->
-<section class="banner-type2">
-	<!--- WRIE HERE PLEASE -- >
+<div class = "logo">
+		<img src="static/logo/tE.png" alt="Logo" style="height: 100px; margin-left: 30px;" onclick="pageRedirect()">
+</div>
+							
+					
+<div class="col-7 text-center" style="margin-top: 40px !important;width: 90%;margin: 0 auto;text-align: center;" >
+
+        <div class="card mdb-color text-left">
+            <div class="card-body">
+                <h2 class="font-weight-bold cyan-lighter-hover mb-3" style="text-align: center;">FAKE NEWS ANALYSIS </h2>
+                <p class="white-darker-hover" style="font-size: 18px;" >
+                1. Give a URL or Article you want to verify.</p>
+                <p class="white-darker-hover" style="font-size: 18px;" >
+                2. The timer will start ,timer depend in the quality and the size of the file.</p> 
+                <p class="white-darker-hover" style="font-size: 18px;" >
+                3. When the process is done you will be redirected to a page where you can see the result or download it.</p>
+                <p><strong> Happy Testing!</strong></p>
+            </div>
+        </div>
+
+    </div>
+    <div class="font-weight-bold cyan-lighter-hover mb-3 text-center" style="display:none ; font-size: 30px;margin-top: 10px !important" id="waiting">
+    Please Wait : <label  id="minutes">00</label>:<label  id="seconds">00</label>
+   <div class="font-weight-light "style=" font-size: 15px"> Expected waiting time : 2 min/MB + upload time </div>
+   <div class="font-weight-light "style=" font-size: 15px"> Expected waiting time will go heigher if the quality is high  </div>
+  </div>
+  <!--------------------
+  <div class = "form">
+              <form action="{{url_for('upload_text')}}" method="POST">
+                <p class="pagetitles"> Enter the article:
+                    <p>
+                        <textarea name="article" , ID='article' , rows="5" cols="50" style="font-size:12pt;height:220px;width:350px;" , placeholder="Insert here"></textarea>
+                        <br>
+                        <br>
+            </form>
+            ----------------->
+            <div align="center">
+            <form method="POST" action="{{url_for('upload_text')}}">
+            <input type="text" name = "url" class="textbox" placeholder="Enter URL">
+            <input title="Search" value="" type="submit" class="button">
+          </form>
+      </div>
+   <!--div class="text-center ">
+   	 <input class="btn btn-outline-info btn-lg" style="margin:0 auto;" id="forwardBtn"  type = "button" name = "file" value = "Start Testing" />
+   </div-->
 
 
-		
-</section>
+<script src="https://cdn.jsdelivr.net/npm/dropzone@5.2.0/dist/dropzone.min.js"></script>
+
+	<script>
+        Dropzone.options.myDropzone = {
+          init: function() {
+                // redirect after queue complete
+                // upload queue when button click
+                // custom init code
+          },
+            // click upload options
+          uploadMultiple: true,
+          parallelUploads: 200,
+          paramName: "file", // The name that will be used to transfer the file
+          maxFilesize: 3000000, // MB
+          acceptedFiles: "image/*, audio/*, video/*, text/*, application/*",
+          maxFiles: 300,
+          dictDefaultMessage: `Drop files here or click to upload.`, // message display on drop area
+          dictFallbackMessage: "Your browser does not support drag'n'drop file uploads.",
+          dictInvalidFileType: "You can't upload files of this type.",
+          dictFileTooBig: "File is too big {{filesize}}. Max filesize: {{maxFilesize}}MiB.",
+          dictResponseError: "Server error: {{statusCode}}",
+          dictMaxFilesExceeded: "You can't upload any more files.",
+          dictCancelUpload: "Cancel upload",
+          dictRemoveFile: "Remove file",
+          dictCancelUploadConfirmation: "You really want to delete this file?",
+          dictUploadCanceled: "Upload canceled",
+          timeout: 9999999,  // custom options code
+        };
+    </script>
+    <script>
+    function pageRedirect() {
+        window.location.href = "/";
+    }      
+    //setTimeout("pageRedirect()", 10000);
+</script>
+
+<script>
+/*$("#forwardBtn").on('click', function (e) {
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+var totalSeconds = 0;
+document.getElementById("waiting").style.display = "block" ; 
+setInterval(setTime, 1000);
+
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+});  */
+$(function() {
+    $('#forwardBtn').bind('click', function() {
+     $.getJSON("{{ url_for('upload_text') }}",
+        function(data) {
+    			window.location = "{{ url_for('text_result') }}";
+            });
+            return false;
+          });
+        });
+</script>  
 <!-- =====================================================
 				==End Banner==
 ===================================================== -->
 
 	<!-- vendor js
 	====================================	 -->
-	<script src="js/vendor/jquery-1.12.1.min.js"></script>
+	<script src="static/js/vendor/jquery-1.12.1.min.js"></script>
 
 	<!-- Bootstrap
 	====================================	 -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
 	
 	<!-- 
 	====================================	 -->
-	<script src="js/jquery.mixitup.min.js"></script>
+	<script src="static/js/jquery.mixitup.min.js"></script>
 
 	<!-- 
 	====================================	 -->
-	<script src="js/owl.carousel.min.js"></script>
+	<script src="static/js/owl.carousel.min.js"></script>
 
 	<!-- Venobox
 	====================================	 -->
-	<script src="js/venobox/venobox.min.js"></script>
+	<script src="static/js/venobox/venobox.min.js"></script>
 
 	<!-- counter up
 	====================================	 -->
-	<script src="js/jquery.counterup.js"></script>
+	<script src="static/js/jquery.counterup.js"></script>
 
 	<!-- Mean Menu
 	====================================	 -->
-	<script src="js/jquery.meanmenu.min.js"></script>
+	<script src="static/js/jquery.meanmenu.min.js"></script>
 
 	<!-- waypoint
 	====================================	 -->
-	<script src="js/waypoints.min.js"></script>
+	<script src="static/js/waypoints.min.js"></script>
 
 	<!-- Contact Map
     =================================    -->
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="static/https://maps.googleapis.com/maps/api/js"></script>
 
 	<!-- main js
 	====================================	 -->
-	<script src="js/main.js"></script>
+	<script src="static/js/main.js"></script>
+	<style>
+#myDropzone{
+  height: 230px;
+  border: 3px black dashed;
+  margin: 25px 70px;
+}
+.dz-default.dz-message{
+  font-size: 2rem;
+  margin: 75px;
+}
+</style>
 </body>
+
 </html>
