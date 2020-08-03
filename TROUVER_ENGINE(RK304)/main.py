@@ -29,8 +29,12 @@ from keras.models import model_from_json
 # Imports PIL module  
 from PIL import Image 
 import tensorflow as tf
+import pickle
 #####################################################
 from flask_cors import CORS, cross_origin
+import requests
+from bs4 import BeautifulSoup
+from newspaper import Article
 #####################################################
 app = Flask(__name__)
 dropzone = Dropzone(app)    # INIT DROPZONE FOR FILE UPLOAD
@@ -50,7 +54,7 @@ with open("modela.json", "r") as json_file:
 loaded_model.load_weights("modelNNa.h5")
 print("-------- Model loaded from disk --------")
 #loaded_model.summary()
-
+model = pickle.load(open('final_model.sav', 'rb'))
 ############# HELPER ################################
 from interface import predict_video, predict_youtube
 
@@ -82,7 +86,34 @@ conf = 0
 OP = ["1", "2", "3", "4", "5"]
 NETWORK_LIST = ["facebook", "flickr", "twitter"]
 res = ""
+var = ""
+ans = []
 """                   """
+
+############################################
+from newsapi import NewsApiClient
+newsapi = NewsApiClient(api_key='e122d722038042529cf99dba207ca492')
+dictNEWS = {}
+
+#################CAN ADD THIS FEATURE##########################
+def getNEWS(a):
+    news_sources = newsapi.get_sources()
+    for source in news_sources['sources']:
+        print(source['name'])
+
+    all_articles = newsapi.get_everything(
+        q=a,
+        language='en',   
+    )
+
+    # Extracting all realted news article
+    for article in all_articles['articles']:
+        print('Source : ',article['source']['name'])
+        print('Title : ',article['title'])
+        print('Description : ',article['description'],'\n\n')
+        dictNEWS['Source']
+
+#################################################################
 
 @app.route('/')
 def index():
@@ -128,12 +159,12 @@ def upload_image():
                 img = np.expand_dims(img, axis = 0)
                 data = cmfdModel.predict(img)
                 plt.imshow(data.squeeze())
-                modDir = os.path.join(app.config["UPLOADED_PATH"], str(sNo))
+                modDir = os.path.join(app.config["UPLOADED_PATH"], str(sNo) + 'img')
                 plt.savefig(modDir) 
                 plt.close()
                 # Store RESULTS
                 imgDirx = "/static/images/" + f.filename
-                modDirx = "/static/images/" + str(sNo)
+                modDirx = "/static/images/" + str(sNo) + 'img'
                 print(imgDirx, file=sys.stderr)
                 print(modDirx, file=sys.stderr)
                 storeResult[imgDirx] = modDirx
@@ -147,7 +178,10 @@ def upload_image():
 """
 @app.route('/image_result')
 def image_result():
-    return render_template('image_result.html', len = len(storeResult), storeResult = storeResult)
+    print(len(storeResult), file=sys.stderr)
+    dict = storeResult.copy()
+    storeResult.clear()
+    return render_template('image_result.html', len = len(dict), storeResult = dict)
 
 
 #####################################################
@@ -164,6 +198,8 @@ def upload_video():
     if request.method == 'POST':
         for key, f in request.files.items():
             if key.startswith('file'):
+                # Change PATH accordingly -----------------
+                # Wherever the folder Lies
                 dd = "C:/Users/loner/Desktop/TROUVER_ENGINE(RK304)/static/videos/" + f.filename
                 f.save(dd)
                 res, conf = predict_video(dd)
@@ -176,7 +212,9 @@ def upload_video():
 """
 @app.route('/video_result')
 def video_result():
-    return render_template('video_result.html', storeResultVid = storeResultVid, OP = OP)
+    dict = storeResultVid.copy()
+    storeResultVid.clear()
+    return render_template('video_result.html', storeResultVid = dict, OP = OP)
 
 ###### HELPER FN ############
 def predictSite(img):
@@ -219,7 +257,33 @@ def viral_result():
     print("HEREEEEEEEEEEEEEEEEEE" + res, file=sys.stderr)
     return render_template("viral_result.html", recv = res)
 
+@app.route('/upload_text', methods = ['POST', 'GET'])
+def upload_text():
+    global ans
+    if request.method == 'POST':
+        url = request.form['url']
+        print(url, file=sys.stderr)
+        print("Yo valid string " + url)
+        article = Article(url)
+        article.download()
+        article.parse()
+        j = article.title
+        #getNEWS(j)      # HERE YOU GET ALL THE RELATED NEWS ARTICLE
+        var = str(article.text)
+        #except:
+        #    print("Yo not a string i guess")
+        #    var = str(url)
+    
+        prediction = model.predict([var])
+        prob = model.predict_proba([var])
+        # truth = prob[0][1]
+        ans =  [prediction[0], prob[0][1]]
+    return render_template('text_result.html', ans = ans)
 
+@app.route('/text_result', methods = ['POST', 'GET'])
+def text_result():
+    print(ans, file=sys.stderr)
+    return render_template('text_result.html', ans = ans)
 
 if __name__ == "__main__":
     app.run()
