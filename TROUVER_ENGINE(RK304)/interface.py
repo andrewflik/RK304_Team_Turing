@@ -36,7 +36,7 @@ def get_votes(video, model=model, sample=39):
         _, frame = video.read() 
         if flag < 6:
             plt.imshow(frame)
-            plt.savefig(os.path.join(APP_ROOT+'/static/images/') + str(flag))
+            plt.savefig(os.path.join(APP_ROOT+'/static/images/') + str(flag) + "vid")
             flag += 1
         try:
             faces, _ = cv.detect_face(frame, threshold=0.9)
