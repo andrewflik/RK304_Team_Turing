@@ -3,8 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Home</title>
-	{{ dropzone.load_css() }}
-{{ dropzone.style('border: 2px dashed #0087F7; margin: 10px 0 10px; min-height: 200px;') }}
 	<!-- Enable zoom on mobile device
 	====================================	 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -96,13 +94,28 @@
 	  border-radius: 50%;
 	}
 	.a{
-		height: 180px;
-		width: 200px;
+		height: 200px;
+		width: 220px;
+		margin-left: -50px;
 	}
 	.b{
-		height: 280px;
-		width: 280px;
+		height: 260px;
+		width: 260px;
+		margin-right: -50px;
+		margin-top: -20px;
 	}
+	.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 	.dropzone {
 		border: 2px dashed #0087F7; 
 		margin: 10px 0 10px; 
@@ -152,14 +165,24 @@
             <div class="card-body">
                 <h2 class="font-weight-bold cyan-lighter-hover mb-3" style="text-align: center;">FORENSICE IMAGE ANALYSIS RESULT </h2>
                 <p style="text-align: center;"><strong> *RESULTS MIGHT NOT BE 100% ACCURATE </strong></p>
+                 <p class="white-darker-hover" style="font-size: 18px;" >
+                1. Blue here refers to NO TAMPERING.</p>
+                <p class="white-darker-hover" style="font-size: 18px;" >
+                2. Green is the localized area of TAMPERING. </p> 
             </div>
         </div>
         <div>       	            	
             	{%for i in storeResult%}
-            		<li> 
-    				<img class = "a" src = "{{i}}"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    				<img class = "b" src = "{{storeResult[i] + '.png'}}">
-    				 </li>
+            	<li>
+            		<div class = "row">
+            			<div class = "column">
+            				<img class = "a" src = "{{i}}">
+            			</div> 	
+            			<div class = "column">
+    						<img class = "b" src = "{{storeResult[i] + '.png'}}">
+    					</div>
+    				</div>
+    			</li>
 				{%endfor%}
         </div>
 
